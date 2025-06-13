@@ -18,13 +18,13 @@ while True:
         case "1":
             try:
                 # Entrada de dados
-                gasolina = float(input("Informe o valor da gasolina: ").replace(",","."))
-                etanol = float(input("Informe o valor do etanol: ").replace(",","."))
+                gasolina = float(input("Informe o valor da gasolina: R$ ").replace(",","."))
+                etanol = float(input("Informe o valor do etanol: R$ ").replace(",","."))
                 vantagem = (etanol/gasolina)*100
-                if vantagem <= 70:
-                     print(f"Valor do porcentual {vantagem}%, compensa a etanol")
+                if vantagem < 70:
+                     print(f"Valor do porcentual {vantagem:.2f}%, compensa a etanol")
                 else:
-                    print(f"Valor do porcentual {vantagem}%, compensa o gasolina")
+                    print(f"Valor do porcentual {int(vantagem)}%, compensa o gasolina")
             except Exception as e:
                 print(f"Não foi possível calcular. {e}.")
             finally:
@@ -32,3 +32,35 @@ while True:
         case "2":
             print("Programa encerrado")
             break
+
+''' if etanol > gasolina*0.7:
+         print(f"Valor do porcentual {vantagem}%, compensa a etanol")
+    else:
+        print(f"Valor do porcentual {vantagem}%, compensa o gasolina")
+    except Exception as e:
+        print(f"Não foi possível calcular. {e}.")
+    finally:
+        continue'''
+
+'''
+while True:
+    gasolina = float(input("Informe o valor da gasolina: R$ ").replace(",","."))
+    etanol = float(input("Informe o valor do etanol: R$ ").replace(",","."))
+    result = "gasolina" if etanol > gasolina*0.7 else "etanol"
+    print(f"Melhor combustível para abastecer: {result}")
+
+    opcao = input("Deseja continuar? (s/n): ").strip().lower()
+    match opcao:
+        case "s":
+            continue
+        case "n":
+            print("Programa encerrado")
+            break
+        case _:
+            print("Opção inválida, encerrando o programa.")
+            contienue
+    except Exception as e:
+            print(f"Não foi possível calcular. {e}.")
+            continue
+# Fim do código da atividade
+'''
