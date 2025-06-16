@@ -27,7 +27,13 @@ while True:
         else:
             print(f"{nome}, seu IMC é {imc:.2f}. Diagnóstico: Obesidade mórbida.")
 
-        prosseguir = input("Deseja continuar? (s/n): ").strip().lower()
+        while True:
+            prosseguir = input("Deseja refazer? (s/n): ").strip().lower()
+            if prosseguir == "s" or prosseguir == "n":
+                break
+            else:
+                print("Opção inválida, por favor digite 's' para sim ou 'n' para não.")
+            continue
         match prosseguir:
             case "s":
                 continue
