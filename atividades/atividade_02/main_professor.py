@@ -10,7 +10,7 @@
 
 while True:
     try:
-        nome = input("Informe o seu nome: ").strip()
+        nome = input("Informe o seu nome: ").title().strip()
         peso = float(input("Informe seu peso em Kg: ").replace(",","."))
         altura = float(input("Informe sua altura em metros: ").replace(",","."))
         imc = peso / (altura ** 2)
