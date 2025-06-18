@@ -52,7 +52,7 @@ while True:
                     print("  Tenha um bom filme!!!")
                     break
                 else:
-                    print("Cliente fora da classificação etária")
+                    print("Cliente fora da classificação etária ")
                     continue
             case "4":
                 if idade >= 16:
