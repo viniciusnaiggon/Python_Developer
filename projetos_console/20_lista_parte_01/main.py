@@ -1,5 +1,5 @@
 # lista
-nomes = ["Fulano", "Cicrano", "Beltrano", "João", "Maria, José"]
+nomes = ["Fulano ", "Cicrano", "Beltrano", "João", "Maria, José"]
 
 # ordena a lista
 nomes.sort(reverse=True) # Inverte a ordem alfabetica, de Z a A.
