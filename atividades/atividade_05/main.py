@@ -77,6 +77,6 @@ while True:
                 print("Operador Inválido")
                 continue        
     except Exception as e:
-        print(f"Não foi possível calcular. {e}.")
+        print(f"Não foi possível realizar requisição. {e}.")
     
 
