@@ -22,7 +22,8 @@ while True:
         print("5 - Exclua um nome na lista")
         print("6 - Sair do programa")
         # Informe a opção
-        opcao = input("Informe a operação desejada: ").strip()
+        opcao = input("Informe a opção desejada: ").strip()
+        os.system("cls" if os.name =="nt" else "clear")
         # lista
         match opcao:
             case "1":
@@ -30,11 +31,10 @@ while True:
                 try:
                     novo_nome = input("Informe o novo nome: ").title().strip()
                     nomes.append(novo_nome)
+                    print(f"{novo_nome} inserido com sucesso!")
                 except Exception as e:
                     print(f"Não foi possível Infomar o nome. {e}.")
                 finally:
-                    for i in range(len(nomes)):
-                        print(f"{i}: {nomes[i]}.")
                     continue
 
             case "2":
@@ -42,56 +42,55 @@ while True:
                 try:
                     for i in range(len(nomes)):
                         print(f"{i}: {nomes[i]}.")
+                    print(f"{'-'*46}")
                 except Exception as e:
-                    print(f"Não foi possível litar a lista. {e}.")
+                    print(f"Não foi possível exibir a lista. {e}.")
                 finally:
-                    for i in range(len(nomes)):
-                        print(f"{i}: {nomes[i]}.")
                     continue
 
             case "3":
+                # Pesquise por um nome na lista
                 try:
                     nome_pesquisada = input("Informe o nome a ser pesquisado: ").title().strip()
                     qtde = nomes.count(nome_pesquisada)
                     print(f"{nome_pesquisada} foi encontrado {qtde} vezes na lista.")
                 except Exception as e:
-                    print(f"Não foi possível litar a lista. {e}.")
+                    print(f"Não foi possível pesquisar o nome. {e}.")
                 finally:
                     continue
 
             case "4":
+                # Altere um nome na lista
                 try:
-                    # Usuário informa o nome e a posição (índice)
-                    i = int(input("Informe a posição do índice a ser alterado: "))
+                    # Usuário informa a posição (índice)
+                    i = int(input("Informe o índice a ser alterado: "))
 
-                    if i >= 0 and i <= len(nomes):
-                        # Insere novo item em uma posição na lista
-                        nomes[i] = input("Informe o novo valor: ").capitalize().strip()
-                        print("Nome inserida com sucesso!")
+                    if i >= 0 and i < len(nomes):
+                        # Atualiza novo item na posição informada
+                        nomes[i] = input("Informe o novo nome: ").title().strip()
+                        os.system("cls" if os.name =="nt" else "clear")
+                        print("Nome atualizado com sucesso!")
                     else:
-                        print("Índice inválido.")
+                        print("Índice inválido")
                 except Exception as e:
-                    print(f"Não foi possível inserir item na lista. {e}.") 
+                    print(f"Não foi possível alterar. {e}.") 
                 finally:
-                    # Re-exibe a lista e suas posições
-                    for i in range(len(nomes)):
-                        print(f"Índice {i}: {nomes[i]}.")
+                    continue
 
             case "5":
+                # Exclua um nome na lista
                 try:
                     i = int(input("Informe a posição do nome na lista: "))
                     if i >= 0 and i < len(nomes):
                         # Exclui nome da lista
                         del(nomes[i])
+                        os.system("cls" if os.name =="nt" else "clear")
                         print("Nome excluído com sucesso!")
                     else:
-                        print("Posição inválida.")
+                        print("Índice inválido.")
                 except Exception as e:
                     print(f"Não foi possível excluir o nome da lista {e}.")
                 finally:
-                    # Re-exibe a lista e suas posições
-                    for i in range(len(nomes)):
-                        print(f"{i}: {nomes[i]}.")
                     continue
             case "6":
                 print("Programa encerrado")
