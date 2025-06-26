@@ -37,7 +37,7 @@ while True:
                 continue
 
         case "3":
-            # Sortear nome (random )
+            # Sortear nome (random)
             i = random.randint(0, len(nomes)-1)
             print(f"Nome sorteado: {nomes[i]}")
 
