@@ -11,8 +11,7 @@ itens = [
 ]
 
 # Exibe a lista de campras
-for i in range(len(itens)):
-    print(f"Índice {i}: {itens[i]}.")
+itens[i] = input("Informe o novo valor: ").capitalize().strip()
 
 # Usuário informa o índice a ser alterado
 try:
