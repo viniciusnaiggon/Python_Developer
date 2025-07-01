@@ -20,7 +20,7 @@ import os
 import random
 import datetime 
 from datetime import date
-from sys import exception
+
 
 usuarios = []
 
@@ -78,7 +78,7 @@ while True:
                         for i, usuario in enumerate(usuarios):
                             print(f"\nÍndice: {i}")
                             for chave, valor in usuario.items():
-                                print(f"{chave.capitalize().replace('_', ' ')}: {valor}")
+                                print(f"{chave.capitalize()}: {valor}")
                 except Exception as e:
                     print(f"Não foi possível listar os usuários. {e}.")
                 finally:
@@ -97,8 +97,8 @@ while True:
                             continuar = "s"
                             while continuar == "s":
                                 print("\nCampos disponíveis para alteração:")
-                                for chave in usuarios[indice].keys():
-                                    print(f"{chave.capitalize()}: {usuario.get(chave)}")
+                                for chave in usuarios[indice]:
+                                    print(f"{chave.capitalize()}: {usuarios[indice][chave]}")
 
                                 chave_escolhida = input("Informe a chave que deseja alterar: ").lower().strip()
                                 if chave_escolhida in usuarios[indice]:
