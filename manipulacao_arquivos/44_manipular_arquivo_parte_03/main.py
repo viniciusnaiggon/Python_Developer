@@ -4,7 +4,7 @@ while True:
     try:
         novo_texto = input("Digite o texto:\n")
         nome_arquivo = input("Dê o nome do arquivo (sem extensão): ").strip().lower()
-        with open(f"manipulacao_arquivos/44_manipular_arquivo_03/{nome_arquivo}.txt", "w", encoding="utf-8") as f:
+        with open(f"44_manipular_arquivo_parte_03/{nome_arquivo}.txt", "w", encoding="utf-8") as f:
             f.write(novo_texto)
         os.system("cls" if os.name == "nt" else "clear")
         print(f"Arquivo '{nome_arquivo}.txt' gravado com sucesso!")

@@ -7,7 +7,7 @@ while True:
         arquivo = input("Informe o nome do arquivo (sem extensão): ").strip().lower()
 
         # Abreo o arquivo
-        with open(f"manipulacao_arquivos/{arquivo}.txt", "r", encoding="utf-8") as f:
+        with open(f"{arquivo}.txt", "r", encoding="utf-8") as f:
             arquivo_aberto = f.read()
         os.system("cls" if os.name == "nt" else "clear")
 
