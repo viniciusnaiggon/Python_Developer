@@ -16,7 +16,7 @@ try:
     
     # Serializa o dicinário em json e grava o arquivo
     with open(f"{arquivo}.json", "w", encoding="utf-8") as f:
-        json.dump(lista, f)
+        json.dump(lista, f, ensure_ascii=False, indent=4)
     
     # Confirmação
     print("Conversão gravada com sucesso.")
