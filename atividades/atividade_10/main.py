@@ -24,7 +24,7 @@ usuarios = []
 arquivo = ""
 while True:
     try:
-        usuario = {}
+        
         # Menu 
         if not arquivo:
             print("Nenhum aquivo aberto")
@@ -58,10 +58,14 @@ while True:
                 diretorio = input("Informe o diretório: ").strip().lower()
                 with open(f"{diretorio}/{arquivo}.json", "r", encoding="utf-8") as f:
                     dados = json.load(f)
-                    print("Arquivo aberto com sucesso")     
+                    usuarios = dados
+                os.system("cls" if os.name == "nt" else "clear")
+                print("Arquivo aberto com sucesso")     
 
             case "3":
                 try:
+                    usuario = {}
+
                     usuario['nome'] = input("Informe o nome: ").strip().title()
                     usuario['data_nascimento'] = input("Informe a data de nascimento: ")
                     usuario['CPF'] = input("Informe o CPF: ")
@@ -79,25 +83,64 @@ while True:
                     print(f"Não foi possível cadastrar usuário. {e}.")
             
             case "4":
-                if not arquivo:
-                    print("Nenhum arquivo aberto")
-
-                with open(f"{diretorio}/{arquivo}.json", "r", encoding="utf-8") as f:
-                    dados = json.load(f)
-                print(f"{'-'*20} USUÁRIOS {'-'*20}")
-                for usuario in dados:
-                    for chave in usuario:
-                        print(f"{chave.capitalize()}: {usuario.get(chave)}")
-                    print(f"{'-'*40}")
+                if not usuarios:
+                    print("Nenhum usuário cadastrado.")
+                else:
+                    with open(f"{diretorio}/{arquivo}.json", "r", encoding="utf-8") as f:
+                        dados = json.load(f)
+                    print(f"{'-'*20} USUÁRIOS {'-'*20}")
+                    for i, usuario in enumerate(dados):
+                        print(f"\nÍndice: {i}")
+                        for chave in usuario:
+                            print(f"    {chave.capitalize()}: {usuario.get(chave)}")
+                        print(f"{'-'*50}")
             
-            case "5":
-                ...
+            case "5":   
+                chave = input("Informe a chave para buscar (ex: nome, cpf, email): ").lower()
+                valor = input("Informe o valor para buscar: ")
+
+                encontrados = []
+
+                for usuario in usuarios:
+                    if usuario.get(chave, "").lower() == valor.lower():
+                        encontrados.append(usuario)
+                
+                if encontrados:
+                    for usuario in encontrados:
+                        print("\n--- Usuário encontrado ---")
+                        for chave, valor in usuario.items():
+                            print(f"{chave.capitalize()}: {valor}")
+                else:
+                    print("Nenhum usuário encontrado com esse valor.")
+
 
             case "6":
-                ...
-            
+                if not usuarios:
+                    print("\nNenhum usuário cadastrado para alterar.")
+                    continue
+                try:
+                    indice = int(input("Informe o índice do usuário a ser alterado: "))
+                    if 0 <= indice < len(usuarios):
+                        usuario_alterado = usuarios[indice]
+                        print("Usuário encontrado. Deixe em branco para manter o valor atual.")
+                        usuario_alterado["nome"] = input(f"Nome ({usuario_alterado['nome']}): ") or usuario_alterado["nome"]
+                        usuario_alterado["data_nascimento"] = input(f"Data de nascimento ({usuario_alterado['nascimento']}): ") or usuario_alterado["nascimento"]
+                        usuario_alterado["email"] = input(f"E-mail ({usuario_alterado['email']}): ") or usuario_alterado["email"]
+                        usuario_alterado["telefone"] = input(f"Telefone ({usuario_alterado['telefone']}): ") or usuario_alterado["telefone"]
+                        usuario_alterado["filme"] = input(f"Filme favorito ({usuario_alterado['filme']}): ") or usuario_alterado["filme"]
+                except Exception as e:
+                    print(f"Não foi possível cadastrar usuário. {e}.")
+
             case "7":
-                ...
+                if not arquivo:
+                    print("Nenhum arquivo aberto")
+                if not usuarios:
+                    print("\nNenhum usuário cadastrado para alterar.")
+                else:
+                    print("\n--- Lista de Usuários ---")
+                    for i, usuario in enumerate(usuarios):
+                        print(f"{i} - {usuario['nome']}")
+
             
             case "8":
                 print("Programa encerrado")
