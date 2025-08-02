@@ -17,41 +17,42 @@ O usuário pode fazer no programa:
 import funcao as fu
 import classe as cl
 
-while True:
-    try:
-        fu.limpar_tela()
+if __name__ == "__main__":
+    while True:
+        try:
+            fu.limpar_tela()
 
-        print(f"{'-'*20} MENU {"-"*20}")
-        print("1 - Criar conta.")
-        print("2 - Consultar dados.")
-        print("3 - Depositar valor.")
-        print("4 - Sacar valor.")
-        print("5 - Imprimir extrato")
-        print("6 - Sair do programa.")
-        opcao = input("Informe a opção desejada: ").strip()
+            print(f"{'-'*20} MENU {"-"*20}")
+            print("1 - Criar conta.")
+            print("2 - Consultar dados.")
+            print("3 - Depositar valor.")
+            print("4 - Sacar valor.")
+            print("5 - Imprimir extrato")
+            print("6 - Sair do programa.")
+            opcao = input("Informe a opção desejada: ").strip()
 
-        match opcao:
-            case "1":
-                ...
+            match opcao:
+                case "1":
+                    ...
 
-            case "2":
-                ...
+                case "2":
+                    ...
 
-            case "3":
-                ...
+                case "3":
+                    ...
 
-            case "4":
-                ...            
-            case "5":
-                ...
-            case "6":
-                print("Programa encerrado")
-                break
-                
-            case _:
-                print("Opção Inválida")
-                input("\nPressione Enter para continuar...")
-                continue  
-    except Exception as e:
-        print(f"Não foi possível realizar requisição. {e}.")
-        input("\nPressione Enter para continuar...")
+                case "4":
+                    ...            
+                case "5":
+                    ...
+                case "6":
+                    print("Programa encerrado")
+                    break
+                    
+                case _:
+                    print("Opção Inválida")
+                    input("\nPressione Enter para continuar...")
+                    continue  
+        except Exception as e:
+            print(f"Não foi possível realizar requisição. {e}.")
+            input("\nPressione Enter para continuar...")
