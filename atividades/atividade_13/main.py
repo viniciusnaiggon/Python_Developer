@@ -33,18 +33,62 @@ if __name__ == "__main__":
 
             match opcao:
                 case "1":
-                    ...
+                    titular = input("Informe o nome do titular: ").strip().title()
+                    cpf = input("Informe o CPF: ").strip()
+                    agencia = input("Informe a agência: ").strip()
+                    conta = input("Informe o número da conta: ").strip()
+                    saldo = float(input("Informe o saldo inicial: ").strip())
+                    conta = cl.Conta(titular, cpf, agencia, conta, saldo)
+                    print("Conta criada com sucesso!")
+                    input("\nPressione Enter para continuar...")
 
                 case "2":
-                    ...
+                    try:
+                        if conta:
+                            print("\nDados da conta: ")
+                            print(conta.consultar())
+                        else: 
+                            print("Nenhuma conta criada.")
+                        input("\nPressione Enter para continuar...")
+                    except Exception as e:
+                        print(f"Não foi possível consultar dados. {e}.")
 
                 case "3":
-                    ...
-
+                    try:
+                        if conta:
+                            valor = float(input("Informe o valor do depósito: "))
+                            if conta.depositar(valor):
+                                print("Depósito realizado com sucesso!")
+                            else:
+                                print("Valor inválido.")
+                        else:
+                            print("Nenhuma conta cadastrada.")
+                        input("\nPressione Enter para continuar...")
+                    except Exception as e:
+                        print(f"Não foi possível realizar depósito. {e}.")
                 case "4":
-                    ...            
+                    try:
+                        if conta:
+                            valor = float(input("Informe o valor do saque: "))
+                            if conta.sacar(valor):
+                                print("Saque realizado com sucesso!")
+                            else:
+                                print("Saldo insuficiente ou valor inválido.")
+                        else:
+                            print("Nenhuma conta cadastrada.")
+                        input("\nPressione Enter para continuar...")
+                    except Exception as e:
+                        print(f"Não foi possível realizar saque. {e}.")            
                 case "5":
-                    ...
+                    try:
+                        if conta:
+                            conta.salvar_extrato_em_json()
+                            print(f"Extrato salvo como 'extrato_{conta.conta}.json'")
+                        else:
+                            print("Nenhuma conta cadastrada.")
+                        input("\nPressione Enter para continuar...")
+                    except Exception as e:
+                        print(f"Não foi possível realizar saque. {e}.")
                 case "6":
                     print("Programa encerrado")
                     break
