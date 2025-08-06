@@ -1,0 +1,10 @@
+{
+    "titular": "Vinicius Gabruke",
+    "cpf": "12345678930",
+    "agencia": "010203",
+    "conta": "02031",
+    "saldo": 5000.0,
+    "extrato": [
+        "Nenhuma movimentação realizada."
+    ]
+}
